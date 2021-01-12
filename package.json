@@ -1,0 +1,15 @@
+{
+  "name": "berrybox-client",
+  "version": "1.0.0",
+  "description": "BerryBox client app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Kristijan Soldo",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.1.1"
+  }
+}
