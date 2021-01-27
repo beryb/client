@@ -6,7 +6,7 @@ function createWindow () {
     autoHideMenuBar: true,
   })
 
-  win.loadURL(process.env.APP_URL)
+  win.loadURL('https://bb.soldo.dev')
 }
 
 app.whenReady().then(createWindow)

@@ -4,13 +4,55 @@
   "description": "BerryBox client app",
   "main": "main.js",
   "scripts": {
-    "start": "cross-env APP_URL=http://localhost:8000/ electron ."
+    "start": "electron-forge start",
+    "start-prod": "cross-env APP_URL=https://bb.soldo.dev/ electron-forge start",
+    "make-prod": "cross-env APP_URL=https://bb.soldo.dev/ electron-forge make",
+    "package": "electron-forge package --platform=mas",
+    "make-debian": "electron-forge package --platform=linux",
+    "make": "electron-forge make"
   },
   "keywords": [],
   "author": "Kristijan Soldo",
   "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "cross-env": "^7.0.3",
     "electron": "^11.1.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "berrybox_client"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "name": "berrybox_client_deb"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
